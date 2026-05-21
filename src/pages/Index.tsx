@@ -108,50 +108,84 @@ export default function Index() {
         )}
       </nav>
 
-      {/* HERO */}
-      <section id="hero" className="relative h-screen min-h-[600px] flex items-end overflow-hidden">
-        <img src={HERO_BG} alt="Жилой комплекс" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2a1a0e]/80 via-[#2a1a0e]/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2a1a0e]/40 to-transparent" />
+      {/* HERO — split screen */}
+      <section id="hero" className="min-h-screen pt-16 flex flex-col md:flex-row overflow-hidden bg-[#faf7f2]">
 
-        {/* Realtor portrait */}
-        <div className="absolute bottom-0 right-8 md:right-24 w-56 md:w-80 z-10">
-          <img src={REALTOR_PHOTO} alt="Анна Соколова — риэлтор"
-            className="w-full object-cover object-top rounded-t-full"
-            style={{ maskImage: "linear-gradient(to top, transparent 0%, black 15%)", WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 15%)" }}
-          />
-        </div>
+        {/* Left — текст */}
+        <div className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 md:py-0 relative z-10">
+          {/* Декоративная линия */}
+          <div className="flex items-center gap-4 mb-10">
+            <div className="w-12 h-px bg-[#e07b39]" />
+            <span className="text-[#e07b39] text-xs font-semibold tracking-[0.25em] uppercase">Риэлтор · Москва</span>
+          </div>
 
-        {/* Hero content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-20 md:pb-28">
-          <p className="font-cormorant text-[#e8c9a0] text-lg md:text-xl italic mb-3 opacity-90">
-            Ваш надёжный проводник в мире недвижимости
-          </p>
-          <h1 className="font-cormorant text-5xl md:text-7xl font-bold text-white leading-tight mb-4 max-w-2xl">
-            Найдём квартиру<br />
-            <span className="text-[#e07b39]">вашей мечты</span>
+          <h1 className="font-cormorant text-[clamp(3rem,6vw,5.5rem)] font-bold text-[#2a1a0e] leading-[0.95] mb-8">
+            Квартира,<br />
+            <span className="italic text-[#e07b39]">которую вы</span><br />
+            искали
           </h1>
-          <p className="text-[#e8d5c0] text-base md:text-lg max-w-lg mb-8 leading-relaxed">
-            15 лет опыта · более 1000 сделок · Москва и Подмосковье
+
+          <p className="text-[#7a5c48] text-base md:text-lg leading-relaxed max-w-sm mb-10">
+            Помогаю найти, проверить и купить недвижимость без стресса. 15 лет на рынке Москвы и Подмосковья.
           </p>
-          <div className="flex flex-wrap gap-4">
+
+          <div className="flex flex-col sm:flex-row gap-3 mb-14">
             <a href="tel:+79001234567"
-              className="inline-flex items-center gap-2 bg-[#e07b39] text-white font-semibold px-7 py-4 rounded-full hover:bg-[#c96b2a] transition-all duration-200 shadow-lg text-sm md:text-base">
-              <Icon name="Phone" size={18} />
-              Позвонить
+              className="inline-flex items-center justify-center gap-2 bg-[#2a1a0e] text-[#faf7f2] font-semibold px-8 py-4 rounded-2xl hover:bg-[#e07b39] transition-all duration-300 text-sm">
+              <Icon name="Phone" size={16} />
+              Позвонить сейчас
             </a>
             <button onClick={() => scrollTo("#booking")}
-              className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/40 text-white font-semibold px-7 py-4 rounded-full hover:bg-white/25 transition-all duration-200 text-sm md:text-base">
-              <Icon name="CalendarCheck" size={18} />
-              Записаться онлайн
+              className="inline-flex items-center justify-center gap-2 border-2 border-[#2a1a0e] text-[#2a1a0e] font-semibold px-8 py-4 rounded-2xl hover:bg-[#2a1a0e] hover:text-[#faf7f2] transition-all duration-300 text-sm">
+              <Icon name="CalendarCheck" size={16} />
+              Записаться
             </button>
+          </div>
+
+          {/* Stats strip */}
+          <div className="flex gap-8 pt-8 border-t border-[#e8d5c0]">
+            {[["1000+", "сделок"], ["15", "лет опыта"], ["98%", "довольных"]].map(([val, lbl]) => (
+              <div key={lbl}>
+                <div className="font-cormorant text-3xl font-bold text-[#2a1a0e]">{val}</div>
+                <div className="text-xs text-[#9a7a5a] mt-0.5 uppercase tracking-wide">{lbl}</div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-60">
-          <span className="text-white text-xs tracking-widest uppercase">Листайте</span>
-          <Icon name="ChevronDown" size={20} className="text-white animate-bounce" />
+        {/* Right — фото + карточка */}
+        <div className="flex-1 relative min-h-[50vh] md:min-h-0 overflow-hidden">
+          {/* Фото ЖК */}
+          <img src={HERO_BG} alt="Жилой комплекс"
+            className="absolute inset-0 w-full h-full object-cover" />
+
+          {/* Тёмный оверлей снизу */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2a1a0e]/60 via-transparent to-transparent" />
+
+          {/* Фото риэлтора — снизу */}
+          <div className="absolute bottom-0 left-8 w-40 md:w-52 z-10">
+            <img src={REALTOR_PHOTO} alt="Анна Соколова"
+              className="w-full object-cover object-top"
+              style={{ maskImage: "linear-gradient(to top, transparent 0%, black 20%)", WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 20%)" }}
+            />
+          </div>
+
+          {/* Карточка-бейдж */}
+          <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-2xl max-w-[180px]">
+            <div className="flex gap-1 mb-2">
+              {[1,2,3,4,5].map(i => (
+                <Icon key={i} name="Star" size={12} className="text-[#e07b39] fill-[#e07b39]" />
+              ))}
+            </div>
+            <div className="font-cormorant text-sm font-bold text-[#2a1a0e] leading-tight">Анна Соколова</div>
+            <div className="text-[#9a7a5a] text-xs mt-0.5">Риэлтор №1 в районе</div>
+          </div>
+
+          {/* Бейдж "онлайн" */}
+          <div className="absolute top-8 right-8 bg-[#e07b39] text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+            <span className="w-2 h-2 bg-white rounded-full inline-block animate-pulse" />
+            Онлайн-запись открыта
+          </div>
         </div>
       </section>
 
