@@ -6,6 +6,7 @@ const REALTOR_PHOTO = "https://cdn.poehali.dev/projects/aaccd30d-ea20-41a6-9c8d-
 
 const NAV_LINKS = [
   { label: "О компании", href: "#about" },
+  { label: "Цены", href: "#pricing" },
   { label: "Преимущества", href: "#advantages" },
   { label: "Объекты", href: "#properties" },
   { label: "Отзывы", href: "#reviews" },
@@ -189,7 +190,107 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ABOUT */}
+      {/* PRICING */}
+      <section id="pricing" className="py-24 bg-[#2a1a0e]">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block text-[#e07b39] text-xs font-semibold tracking-[0.25em] uppercase mb-4">Стоимость услуг</span>
+            <h2 className="font-cormorant text-5xl font-bold text-white leading-tight">
+              Прозрачные условия<br />
+              <span className="italic text-[#e07b39]">без скрытых комиссий</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Карточка 1 — Квартиры */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col hover:border-[#e07b39]/50 transition-colors duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#e07b39]/20 flex items-center justify-center flex-shrink-0">
+                  <Icon name="Building2" size={22} className="text-[#e07b39]" />
+                </div>
+                <div>
+                  <div className="text-white font-bold text-lg leading-tight">Продажа квартиры</div>
+                  <div className="text-[#9a7a5a] text-sm">Первичный и вторичный рынок</div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="font-cormorant text-5xl font-bold text-white">2–3%</div>
+                <div className="text-[#9a7a5a] text-sm mt-1">от стоимости сделки</div>
+              </div>
+
+              <ul className="space-y-3 mb-8 flex-1">
+                {[
+                  "Подбор вариантов по вашим критериям",
+                  "Организация просмотров",
+                  "Проверка юридической чистоты",
+                  "Переговоры и торг с продавцом",
+                  "Полное сопровождение сделки",
+                  "Помощь с ипотекой у банков-партнёров",
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-[#e8d5c0] text-sm">
+                    <Icon name="Check" size={16} className="text-[#e07b39] mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <button onClick={() => scrollTo("#booking")}
+                className="w-full bg-[#e07b39] text-white font-semibold py-4 rounded-2xl hover:bg-[#c96b2a] transition-colors duration-200 text-sm">
+                Получить консультацию
+              </button>
+            </div>
+
+            {/* Карточка 2 — Дома */}
+            <div className="bg-[#e07b39]/10 border border-[#e07b39]/40 rounded-3xl p-8 flex flex-col relative overflow-hidden hover:border-[#e07b39] transition-colors duration-300">
+              <div className="absolute top-6 right-6 bg-[#e07b39] text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                Популярно
+              </div>
+
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#e07b39]/30 flex items-center justify-center flex-shrink-0">
+                  <Icon name="TreePine" size={22} className="text-[#e07b39]" />
+                </div>
+                <div>
+                  <div className="text-white font-bold text-lg leading-tight">Продажа дома с участком</div>
+                  <div className="text-[#9a7a5a] text-sm">Загородная недвижимость</div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="font-cormorant text-5xl font-bold text-white">3–4%</div>
+                <div className="text-[#9a7a5a] text-sm mt-1">от стоимости сделки</div>
+              </div>
+
+              <ul className="space-y-3 mb-8 flex-1">
+                {[
+                  "Оценка дома и земельного участка",
+                  "Проверка документов на землю и дом",
+                  "Анализ инфраструктуры и коммуникаций",
+                  "Переговоры с собственником",
+                  "Контроль перехода права собственности",
+                  "Сопровождение до передачи ключей",
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-[#e8d5c0] text-sm">
+                    <Icon name="Check" size={16} className="text-[#e07b39] mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <button onClick={() => scrollTo("#booking")}
+                className="w-full bg-white text-[#2a1a0e] font-semibold py-4 rounded-2xl hover:bg-[#e07b39] hover:text-white transition-colors duration-200 text-sm">
+                Получить консультацию
+              </button>
+            </div>
+          </div>
+
+          <p className="text-center text-[#9a7a5a] text-sm mt-8">
+            Первичная консультация — бесплатно. Точная стоимость обсуждается индивидуально.
+          </p>
+        </div>
+      </section>
+
       <section id="about" className="py-24 bg-[#f5ede1]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
